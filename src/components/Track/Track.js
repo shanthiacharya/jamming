@@ -2,17 +2,42 @@ import React,{Component} from 'react'
 import './Track.css'
 
 
+
 class Track extends Component {
 
+  constructor(props) {
+    super(props)
+    
+  }
+
+  
+
+  handleTrackAddtoPlayList = (event) => {
+       console.log("Track :  handleTrackAddtoPlayList")
+       this.props.added (this.props.track)
+
+       event.preventDefault();
+
+  }
+
+  handleTrackDeletefromPlayList = (event) => {
+    this.props.deleted(this.props.track)
+    event.preventDefault();
+}
+
      render() {
-         return (
-              
+        
+        let btnsign ='+';
+        if (this.props.playlist) {
+                  btnsign='-';
+        }
+         return (  
               <div className="Track">
                 <div className="Track-information">
-                  <h3>Tiny Dancer</h3>
-                  <p>Elsdjdhohn | Madman Across The Water</p>
+                  <h3>{this.props.track.name}</h3>
+                  <p> {this.props.track.artist} | {this.props.track.album}</p>
                 </div>
-                <a className="Track-action">+</a>
+                <a className="Track-action" onClick = {this.props.playlist? this.handleTrackDeletefromPlayList:this.handleTrackAddtoPlayList}>{btnsign}</a>
               </div>
          )
      }

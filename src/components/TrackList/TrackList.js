@@ -11,7 +11,14 @@ class TrackList extends Component {
               <div className="SearchResults">
                 <h2>Results</h2>
                 <div className="TrackList">
-                      <Track/>
+                {
+                    this.props.tracks.map (track => {
+                       return <Track key= {track.id} track = {track} 
+                            added = {() => this.props.addtoPlayList(track)}
+                            />
+                    })
+                      
+                }
                 </div>
                </div> 
             

@@ -1,22 +1,52 @@
 import React,{Component} from 'react';
 import './PlayList.css'
+import Track from '../Track/Track'
 
 
 class PlayList extends Component {
+
+    constructor(props) {
+        super (props);
+        this.state = {
+            playlistname:'',
+            playlisttracks:[]
+            
+        }
+    }
+
+    updateItems = (newplaylisttracks) => {
+         console.log("UpdatedPlayList Items:");
+         this.setState({playlisttracks : newplaylisttracks})
+
+    }
+
+    handlePlayListNameChange = (event) => {
+
+        this.state.playlistname = event.target.value;
+
+    }
+
+    handlePlayListSave = (event) => {
+            this.props.savetoPlaylist(this.state.playlistname)
+    }
+
+
     render() {
+        console.log("PlayList Items:" + this.props.playlistItems);
          return (
             <div className="Playlist">
-                <input value='New Playlist' />
+                <input placeholder='Enter PlayList Name'  onChange = {this.handlePlayListNameChange} />
                 <div className="TrackList">
-                    <div className="Track">
-                        <div className="Track-information">
-                        <h3>Stronger</h3>
-                        <p>Britney Spears | Oops!... I Did It Again</p>
-                        </div>
-                        <a className="Track-action">-</a>
-                    </div>
-                </div>
-                <a className="Playlist-save">SAVE TO SPOTIFY</a>
+                         {
+                            this.props.playlistItems.map (track => {
+                            return <Track key= {track.id} track = {track} 
+                                    deleted = {() => this.props.deletefromPlayList(track)}
+                                    playlist/>
+                            })
+                      
+                        }
+                 </div>
+                <a className="Playlist-save" onClick={this.handlePlayListSave} >SAVE TO SPOTIFY</a>
             </div>   
         )
     }
