@@ -56,11 +56,18 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <SearchBar searchSpotify = {this.searchSpotify}/>
-        <div className="App-playlist">
-        <TrackList tracks = {this.state.tracks} addtoPlayList = {this.handleAddTracks }  deleteFromPlaylist = {this.handleDeleteTracks } />
-        <PlayList  playlistItems = {this.state.playlisttracks} savetoPlaylist = {this.saveplaylistToSpotify} deletefromPlayList = {this.handleDeleteTracks }/>
+      <div>
+         <h1> Ja<span className="highlight">mmm</span>ing</h1>
+         <div className="App">
+            <SearchBar searchSpotify = {this.searchSpotify}/>
+            <div className="App-playlist">
+              <TrackList tracks = {this.state.tracks} 
+                addtoPlayList = {this.handleAddTracks }  
+                deleteFromPlaylist = {this.handleDeleteTracks } />
+              <PlayList  playlistItems = {this.state.playlisttracks}
+               savetoPlaylist = {this.saveplaylistToSpotify} 
+               deletefromPlayList = {this.handleDeleteTracks }/>
+          </div>
          </div>
       </div>
     );
