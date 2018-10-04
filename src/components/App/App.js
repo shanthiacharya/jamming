@@ -19,35 +19,30 @@ class App extends Component {
   }
 
   searchSpotify (term) {
-    console.log("Search Term:" + term)
     Spotify.search(term).then (tracks => {
       this.setState ({tracks:tracks});
-      console.log ("App.js :" + this.state.tracks)
+     
     })
   }
 
  
 
   handleAddTracks = (track) => {
-    console.log("App :   handleAddTracks")
     if (!this.state.playlisttracks.find(playlistTrack => playlistTrack.id === track.id)) {
       this.setState(prevState => ({
         playlisttracks: [...prevState.playlisttracks, track]
       }));
     }
-    console.log("playlisttracks length" + this.state.playlisttracks.length)
+   
   }
 
   handleDeleteTracks = (tobedeleted_track) => {
-    console.log("App.s handle delete tracks")
     let filtered_playlist = this.state.playlisttracks.filter(track => track.id !== tobedeleted_track.id );
     this.setState({playlisttracks:filtered_playlist})
   }
 
 
   saveplaylistToSpotify = (name) => {
-
-    console.log ("About to save playlist :" + name)
     const trackURIs = this.state.playlisttracks.map(track => track.uri)
     Spotify.savePlayList(name,trackURIs);
   }

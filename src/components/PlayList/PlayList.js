@@ -15,7 +15,6 @@ class PlayList extends Component {
     }
 
     updateItems = (newplaylisttracks) => {
-         console.log("UpdatedPlayList Items:");
          this.setState({playlisttracks : newplaylisttracks})
 
     }
@@ -32,7 +31,6 @@ class PlayList extends Component {
 
 
     render() {
-        console.log("PlayList Items:" + this.props.playlistItems);
          return (
             <div className="Playlist">
                 <input placeholder='Enter PlayList Name'  onChange = {this.handlePlayListNameChange} />

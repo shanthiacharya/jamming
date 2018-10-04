@@ -13,9 +13,7 @@ class Track extends Component {
   
 
   handleTrackAddtoPlayList = (event) => {
-       console.log("Track :  handleTrackAddtoPlayList")
        this.props.added (this.props.track)
-
        event.preventDefault();
 
   }

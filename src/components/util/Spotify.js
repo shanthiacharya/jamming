@@ -19,7 +19,6 @@ const Spotify = {
             let temp = window.location.href.match(/access_token=([^&]*)/);
             if (temp) {
               accessToken = temp[1];
-              console.log ("Access Token: " + accessToken)
               temp = window.location.href.match(/expires_in=([^&]*)/);
               ttl = temp[1];
               window.setTimeout(() => accessToken = '', ttl * 1000);
@@ -36,14 +35,12 @@ const Spotify = {
         search(term) {
           if (!accessToken) { Spotify.getAccessToken(); }
           const searchUrl = `${base_url}search?q=${term}&type=track,album,artist`;
-          console.log ("Search url :"  + searchUrl )
           return fetch(searchUrl, {
               headers: {
                 'Authorization': `Bearer ${accessToken}`,
                 'Content-Type': 'application/json'
               }
             }).then(response => response.json()).then(jsonResponse => {
-              // console.log (jsonResponse)
               if (!jsonResponse.tracks) { return []; }
               return jsonResponse.tracks.items.map(track => ({
                 id: track.id,
@@ -60,9 +57,6 @@ const Spotify = {
           let playlist_id =null;
           let user_id =null;
           const useridUrl = `${base_url}me`;
-          console.log("SavePlayList Spotify:" + name )
-          console.log("SavePlayList Access token:" + accessToken)
-          
           if (!accessToken) { Spotify.getAccessToken(); }
           const headers = {
             Authorization: `Bearer ${accessToken}`
