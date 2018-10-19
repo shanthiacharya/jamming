@@ -25,10 +25,12 @@ class Track extends Component {
 
      render() {
         
-        let btnsign ='+';
-        if (this.props.playlist) {
-                  btnsign='-';
-        }
+        let btnsign ='';
+         (this.props.playlist)? btnsign='-': btnsign='+'
+
+        // if (this.props.playlist) {
+        //           btnsign='-';
+        // }
          return (  
               <div className="Track">
                 <div className="Track-information">

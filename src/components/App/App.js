@@ -45,23 +45,31 @@ class App extends Component {
   saveplaylistToSpotify = (name) => {
     const trackURIs = this.state.playlisttracks.map(track => track.uri)
     Spotify.savePlayList(name,trackURIs);
+    console.log("Calling Save Playlist")
+    this.handleClearPlayList();
+    // this.setState({playlisttracks:[]})
+    
   }
-
-
+ 
+  handleClearPlayList = () => {
+    console.log("Calling clear Playlist")
+    this.setState({playlisttracks:[]})
+  }
+ 
 
   render() {
     return (
       <div>
          <h1> Ja<span className="highlight">mmm</span>ing</h1>
          <div className="App">
-            <SearchBar searchSpotify = {this.searchSpotify}/>
+            <SearchBar searchSpotify = {this.searchSpotify} />
             <div className="App-playlist">
               <TrackList tracks = {this.state.tracks} 
                 addtoPlayList = {this.handleAddTracks }  
                 deleteFromPlaylist = {this.handleDeleteTracks } />
               <PlayList  playlistItems = {this.state.playlisttracks}
                savetoPlaylist = {this.saveplaylistToSpotify} 
-               deletefromPlayList = {this.handleDeleteTracks }/>
+               deletefromPlayList = {this.handleDeleteTracks } clearPlayList = {this.handleClearPlayList}/>
           </div>
          </div>
       </div>

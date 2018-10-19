@@ -9,15 +9,15 @@ class PlayList extends Component {
         super (props);
         this.state = {
             playlistname:'',
-            playlisttracks:[]
+            // playlisttracks:[]
             
         }
     }
 
-    updateItems = (newplaylisttracks) => {
-         this.setState({playlisttracks : newplaylisttracks})
+    // updateItems = (newplaylisttracks) => {
+    //      this.setState({playlisttracks : newplaylisttracks})
 
-    }
+    // }
 
     handlePlayListNameChange = (event) => {
 
@@ -27,13 +27,16 @@ class PlayList extends Component {
 
     handlePlayListSave = (event) => {
             this.props.savetoPlaylist(this.state.playlistname)
+            const pl_name = document.getElementById("playlistname");
+            pl_name.value='';
+            
     }
-
+ 
 
     render() {
          return (
             <div className="Playlist">
-                <input placeholder='Enter PlayList Name'  onChange = {this.handlePlayListNameChange} />
+                <input id="playlistname" placeholder='Enter PlayList Name'  onChange = {this.handlePlayListNameChange} />
                 <div className="TrackList">
                          {
                             this.props.playlistItems.map (track => {

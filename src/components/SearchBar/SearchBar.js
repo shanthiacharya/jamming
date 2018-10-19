@@ -15,6 +15,9 @@ class SearchBar extends Component {
        
         this.props.searchSpotify(this.state.term);
         event.preventDefault();
+        
+     
+   
     }
 
     handleTermChange(event) {
@@ -25,7 +28,7 @@ class SearchBar extends Component {
     render () {
         return (
             <div className = "SearchBar">
-                <input type="text"  placeholder ="Search by Artist,Album or tracks" onChange ={this.handleTermChange} />
+                <input id="searchField" type="text"  placeholder ="Search by Artist,Album or tracks" onChange ={this.handleTermChange} />
                 <a  onClick = {this.handleSearch}>Search</a>
             </div>
         )
