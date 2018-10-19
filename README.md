@@ -16,8 +16,7 @@ This is a Spotify web application built with reactjs [https://reactjs.org/]
 * [Spotify API](https://developer.spotify.com/documentation/web-api/)
 
 
-<!-- # Screenshots
-(https://user-images.githubusercontent.com/11092669/47236026-ac578100-d38f-11e8-8e0d-6feb109f3793.png)
+![screencapture-jammming-s3-website-us-east-1-amazonaws-2018-10-19-09_36_00](https://user-images.githubusercontent.com/11092669/47236026-ac578100-d38f-11e8-8e0d-6feb109f3793.png)
 
 
 ## Main Page 
